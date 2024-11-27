@@ -1,18 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"time"
+	"GoLearn/study1/lib1"
+	"GoLearn/study1/lib2"
 )
 
-func parTest(i int) {
-	fmt.Println(i)
-
-}
-
 func main() {
-	for i := 0; i < 10000; i++ {
-		parTest(i)
-		time.Sleep(100 * time.Millisecond)
-	}
+	lib1.Lib1Test()
+	lib2.Lib2Test()
 }
