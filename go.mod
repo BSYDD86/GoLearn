@@ -1,1 +1,1 @@
-module GoLearn
+module GoRelated/go
