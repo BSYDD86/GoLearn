@@ -1,16 +1,25 @@
 package main
 
-func main() {
+import (
+	"fmt"
+	"sort"
+)
 
+func main() {
+	arr := [][]int{{1, 2}, {5, 6}, {3, 3}}
+	sort.Slice(arr, func(i, j int) bool {
+		return arr[i][0] < arr[j][0]
+	})
+	fmt.Println(arr)
 }
 func lemonadeChange(bills []int) bool {
 	five := 0
 	ten := 0
-	for bill := range bills {
+	for _, bill := range bills {
 		if bill == 5 {
 			five++
 		} else if bill == 10 {
-			if five < 0 {
+			if five <= 0 {
 				return false
 			} else {
 				five--
