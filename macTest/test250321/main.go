@@ -2,6 +2,33 @@ package main
 
 import "fmt"
 
+func main() {
+	s1 := "ab"
+	s2 := "eidbaooo"
+	fmt.Println(checkInclusion(s1, s2))
+}
+func checkInclusion(s1 string, s2 string) bool {
+	m := map[rune]int{}
+	for _, c := range s1 {
+		m[c]++
+	}
+	r := 0
+	l := 0
+	for r < len(s2) {
+		c := rune(s2[r])
+		m[c]--
+		for m[c] < 0 && l < len(s2) {
+			m[rune(s2[l])]++
+			l++
+		}
+		if r-l+1 == len(s1) {
+			return true
+		}
+		r++
+	}
+	return false
+}
+
 func maxHeap(arr []int) {
 	n := len(arr)
 	for i := n/2 - 1; i >= 0; i-- {
@@ -27,10 +54,4 @@ func heapify(arr []int, n int, i int) {
 	if largestIdx != i {
 		heapify(arr, n, largestIdx)
 	}
-}
-
-func main() {
-	arr := []int{3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5}
-	maxHeap(arr)
-	fmt.Println(arr)
 }
